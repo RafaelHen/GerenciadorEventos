@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt"
+		xmlns="http://www.w3.org/1999/xhtml" 
+		xmlns:th="http://thymeleaf.org">
 <head>
 		<!--Import Google Icon Font-->
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -19,10 +21,30 @@
 				<p>Data: <span th:text="${evento.data}">    </span> </p>
 				<p>Horario: <span th:text="${evento.horario}"> </span> </p>
 			</div>
-		
-		
-		</div>
 			
+			<div class="container formConvidado">
+			<th:block th:include="mensagemValidacao"></th:block>
+			<form method="post">
+				Nome: <input type="text" value="" name="nomeConvidado" placeholder="Nome "/>
+				RG: <input type="text" value="" name="rg"/>
+				<button type="submit" class="waves-effect waves-light btn">Adicionar</button>
+			</form>
+		</div>
+		
+		
+		
+		<h5>Lista Convidados: </h5>
+		<div class="container" th:each="convidado : ${convidados}">
+			<div class="row">
+				<div class="input-field col s6">
+					<p><span th:text="${convidado.nomeConvidado}"> </span> </p>
+				</div>
+				<div class="input-field col s3">
+					<p><span th:text="${convidado.rg}"> </span> </p>
+		 		</div>
+		</div>
+
+		</div>
 		
 		
 		
